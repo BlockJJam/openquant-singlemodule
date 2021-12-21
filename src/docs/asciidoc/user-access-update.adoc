@@ -1,0 +1,43 @@
+ifndef::snippets[]
+:snippets: ./build/generated-snippets
+endif::[]
+:doctype: book
+:icons: font
+:source-highlighter: highlightjs
+:toc: left
+:toclevels: 4
+:sectlinks:
+:site-url: /build/asciidoc/html5/
+
+== Access Update Request
+
+=== [Request Curl Example]
+include::{snippets}/user-access-update/curl-request.adoc[]
+
+=== [Request URI]
+....
+POST /api/userinfo/access-update
+Content-Type: application/json
+Accept: */*
+Authorization: Bearer {token}
+....
+
+=== [Request HTTP Example]
+include::{snippets}/user-access-update/http-request.adoc[]
+
+=== [Request Body]
+include::{snippets}/user-access-update/request-body.adoc[]
+
+=== [Request Header]
+include::{snippets}/user-access-update/request-headers.adoc[]
+
+== Access Update Response
+
+=== [Response HTTP Example]
+include::{snippets}/user-access-update/http-response.adoc[]
+
+=== [Response Body]
+include::{snippets}/user-access-update/response-body.adoc[]
+
+=== [Response Fields]
+include::{snippets}/user-access-update/response-fields.adoc[]

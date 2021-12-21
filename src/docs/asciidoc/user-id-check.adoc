@@ -1,0 +1,36 @@
+ifndef::snippets[]
+:snippets: ./build/generated-snippets
+endif::[]
+:doctype: book
+:icons: font
+:source-highlighter: highlightjs
+:toc: left
+:toclevels: 4
+:sectlinks:
+:site-url: /build/asciidoc/html5/
+
+== User ID Check Request
+
+=== [Request URI]
+....
+GET /api/signup/check/{user_id}
+Content-Type: application/json
+Accept: */*
+....
+
+=== [Request HTTP Example]
+include::{snippets}/user-id-check/http-request.adoc[]
+
+=== [Request Path Variable]
+include::{snippets}/user-id-check/path-parameters.adoc[]
+
+== User ID Check Response
+
+=== [Response HTTP Example]
+include::{snippets}/user-id-check/http-response.adoc[]
+
+=== [Response Body]
+include::{snippets}/user-id-check/response-body.adoc[]
+
+=== [Response Fields]
+include::{snippets}/user-id-check/response-fields.adoc[]

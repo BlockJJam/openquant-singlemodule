@@ -1,0 +1,37 @@
+ifndef::snippets[]
+:snippets: ./build/generated-snippets
+endif::[]
+:doctype: book
+:icons: font
+:source-highlighter: highlightjs
+:toc: left
+:toclevels: 4
+:sectlinks:
+:site-url: /build/asciidoc/html5/
+
+== Admin Article Request
+
+=== [Request URI]
+....
+GET /api/wiki/article?id={id}
+Authorization: Bearer {token}
+Content-Type: application/json
+Accept: */*
+....
+
+=== [Request HTTP Example]
+include::{snippets}/wiki-article/http-request.adoc[]
+
+=== [Request Parameters Example]
+include::{snippets}/wiki-article/request-parameters.adoc[]
+
+== Admin Article Response
+
+=== [Response Fields]
+include::{snippets}/wiki-article/response-fields.adoc[]
+
+=== [Response HTTP Example]
+include::{snippets}/wiki-article/http-response.adoc[]
+
+=== [Response Body]
+include::{snippets}/wiki-article/response-body.adoc[]

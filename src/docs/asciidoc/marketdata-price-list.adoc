@@ -1,0 +1,35 @@
+ifndef::snippets[]
+:snippets: ./build/generated-snippets
+endif::[]
+:doctype: book
+:icons: font
+:source-highlighter: highlightjs
+:toc: left
+:toclevels: 4
+:sectlinks:
+:site-url: /build/asciidoc/html5/
+
+== Price Data Request
+
+=== [Request URI]
+....
+GET /api/md/price-data?code={code}&page={page}&size={size}
+Content-Type: application/json
+....
+
+=== [Request HTTP Example]
+include::{snippets}/marketdata-price-data/http-request.adoc[]
+
+=== [Request Parameters Example]
+include::{snippets}/marketdata-price-data/request-parameters.adoc[]
+
+== Price Data Response
+
+=== [Response HTTP Example]
+include::{snippets}/marketdata-price-data/http-response.adoc[]
+
+=== [Response Body]
+include::{snippets}/marketdata-price-data/response-body.adoc[]
+
+=== [Response Fields]
+include::{snippets}/marketdata-price-data/response-fields.adoc[]

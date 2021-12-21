@@ -1,0 +1,35 @@
+ifndef::snippets[]
+:snippets: ./build/generated-snippets
+endif::[]
+:doctype: book
+:icons: font
+:source-highlighter: highlightjs
+:toc: left
+:toclevels: 4
+:sectlinks:
+:site-url: /build/asciidoc/html5/
+
+== Login Request
+
+=== [Request URI]
+....
+POST /api/login
+Content-Type: application/json
+....
+
+=== [Request HTTP Example]
+include::{snippets}/user-login/http-request.adoc[]
+
+=== [Request Body]
+include::{snippets}/user-login/request-body.adoc[]
+
+=== [Request Field]
+include::{snippets}/user-login/request-fields.adoc[]
+
+== Login Response
+
+=== [Response HTTP Example]
+include::{snippets}/user-login/http-response.adoc[]
+
+=== [Response Body]
+include::{snippets}/user-login/response-body.adoc[]

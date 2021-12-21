@@ -1,0 +1,36 @@
+ifndef::snippets[]
+:snippets: ./build/generated-snippets
+endif::[]
+:doctype: book
+:icons: font
+:source-highlighter: highlightjs
+:toc: left
+:toclevels: 4
+:sectlinks:
+:site-url: /build/asciidoc/html5/
+
+== Category Delete Request
+
+=== [Request URI]
+....
+GET /api/wiki/category/delete?id={id}
+Authorization: Bearer {token}
+Accept: */*
+....
+
+=== [Request HTTP Example]
+include::{snippets}/wiki-category-delete/http-request.adoc[]
+
+=== [Request Parameters Example]
+include::{snippets}/wiki-category-delete/request-parameters.adoc[]
+
+== Category Delete Response
+
+=== [Response Fields]
+include::{snippets}/wiki-category-delete/response-fields.adoc[]
+
+=== [Response HTTP Example]
+include::{snippets}/wiki-category-delete/http-response.adoc[]
+
+=== [Response Body]
+include::{snippets}/wiki-category-delete/response-body.adoc[]

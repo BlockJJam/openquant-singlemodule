@@ -1,0 +1,37 @@
+ifndef::snippets[]
+:snippets: ./build/generated-snippets
+endif::[]
+:doctype: book
+:icons: font
+:source-highlighter: highlightjs
+:toc: left
+:toclevels: 4
+:sectlinks:
+:site-url: /build/asciidoc/html5/
+
+== Article Delete Request
+
+=== [Request URI]
+....
+GET /api/wiki/article/delete?id={id}
+Authorization: Bearer {token}
+Content-Type: application/json
+Accept: */*
+....
+
+=== [Request HTTP Example]
+include::{snippets}/wiki-article-delete/http-request.adoc[]
+
+=== [Request Parameters]
+include::{snippets}/wiki-article-delete/request-parameters.adoc[]
+
+== Article Delete Response
+
+=== [Response Fields]
+include::{snippets}/wiki-article-delete/response-fields.adoc[]
+
+=== [Response HTTP Example]
+include::{snippets}/wiki-article-delete/http-response.adoc[]
+
+=== [Response Body]
+include::{snippets}/wiki-article-delete/response-body.adoc[]

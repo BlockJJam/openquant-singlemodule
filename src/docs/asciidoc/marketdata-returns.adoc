@@ -1,0 +1,32 @@
+ifndef::snippets[]
+:snippets: ./build/generated-snippets
+endif::[]
+:doctype: book
+:icons: font
+:source-highlighter: highlightjs
+:toc: left
+:toclevels: 4
+:sectlinks:
+:site-url: /build/asciidoc/html5/
+
+== Returns of Stock Price Request
+
+=== [Request URI]
+....
+GET /api/md/returns/{date}
+Content-Type: application/json
+....
+
+=== [Request HTTP Example]
+include::{snippets}/marketdata-returns/http-request.adoc[]
+
+=== [Request Parameters Example]
+include::{snippets}/marketdata-returns/path-parameters.adoc[]
+
+== Returns of Stock Price Response
+
+=== [Response HTTP Example]
+include::{snippets}/marketdata-returns/http-response.adoc[]
+
+=== [Response Fields]
+include::{snippets}/marketdata-returns/response-fields.adoc[]

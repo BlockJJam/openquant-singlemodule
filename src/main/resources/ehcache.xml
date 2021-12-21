@@ -1,0 +1,29 @@
+<config
+        xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+        xmlns='http://www.ehcache.org/v3'
+        xmlns:jsr107="http://www.ehcache.org/v3/jsr107"
+        xsi:schemaLocation="http://www.ehcache.org/v3 http://www.ehcache.org/schema/ehcache-core.xsd">
+
+<!--    <service>-->
+<!--        <jsr107:defaults enable-management="true" enable-statistics="true" />-->
+<!--    </service>-->
+
+    <cache-template name="quantDefaultTemplate">
+        <expiry>
+            <ttl unit="minutes">20</ttl>
+        </expiry>
+        <heap unit="MB">1</heap>
+    </cache-template>
+
+    <cache alias="getReturnsOfStockPrice" uses-template="quantDefaultTemplate">
+        <listeners> <!-- listeners는 Cache의 리스너를 등록하는 요소이다. -->
+            <listener>
+                <class>com.tys.openquant.config.cache.listener.CacheEventLogger</class> <!-- 캐싱처리에 대한 리스너가 등록된 클래스의 FQCN을 등록한다. -->
+                <event-firing-mode>ASYNCHRONOUS</event-firing-mode>
+                <event-ordering-mode>UNORDERED</event-ordering-mode>
+                <events-to-fire-on>CREATED</events-to-fire-on>
+                <events-to-fire-on>EXPIRED</events-to-fire-on>
+            </listener>
+        </listeners>
+    </cache>
+</config>

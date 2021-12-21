@@ -1,0 +1,36 @@
+ifndef::snippets[]
+:snippets: ./build/generated-snippets
+endif::[]
+:doctype: book
+:icons: font
+:source-highlighter: highlightjs
+:toc: left
+:toclevels: 4
+:sectlinks:
+:site-url: /build/asciidoc/html5/
+
+== Public Article Request
+
+=== [Request URI]
+....
+GET /api/wiki/public/article?id={id}
+Content-Type: application/json
+Accept: */*
+....
+
+=== [Request HTTP Example]
+include::{snippets}/wiki-public-article/http-request.adoc[]
+
+=== [Request Parameters Example]
+include::{snippets}/wiki-public-article/request-parameters.adoc[]
+
+== Public Article Response
+
+=== [Response Fields]
+include::{snippets}/wiki-public-article/response-fields.adoc[]
+
+=== [Response HTTP Example]
+include::{snippets}/wiki-public-article/http-response.adoc[]
+
+=== [Response Body]
+include::{snippets}/wiki-public-article/response-body.adoc[]

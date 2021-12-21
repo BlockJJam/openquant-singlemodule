@@ -1,0 +1,40 @@
+ifndef::snippets[]
+:snippets: ./build/generated-snippets
+endif::[]
+:doctype: book
+:icons: font
+:source-highlighter: highlightjs
+:toc: left
+:toclevels: 4
+:sectlinks:
+:site-url: /build/asciidoc/html5/
+
+== Menu Tree Update Request
+
+=== [Request URI]
+....
+POST /api/wiki/category/update
+Authorization: Bearer {token}
+Content-Type: application/json
+Accept: */*
+....
+
+=== [Request HTTP Example]
+include::{snippets}/wiki-category-update/http-request.adoc[]
+
+=== [Request Parameters]
+include::{snippets}/wiki-category-update/request-fields.adoc[]
+
+=== [Request Body]
+include::{snippets}/wiki-category-update/request-body.adoc[]
+
+== Menu Tree Update Response
+
+=== [Response Fields]
+include::{snippets}/wiki-category-update/response-fields.adoc[]
+
+=== [Response HTTP Example]
+include::{snippets}/wiki-category-update/http-response.adoc[]
+
+=== [Response Body]
+include::{snippets}/wiki-category-update/response-body.adoc[]

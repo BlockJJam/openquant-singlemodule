@@ -1,0 +1,38 @@
+ifndef::snippets[]
+:snippets: ./build/generated-snippets
+endif::[]
+:doctype: book
+:icons: font
+:source-highlighter: highlightjs
+:toc: left
+:toclevels: 4
+:sectlinks:
+:site-url: /build/asciidoc/html5/
+
+== Signup Request
+
+=== [Request URI]
+....
+POST /api/signup
+Content-Type: application/json
+....
+
+=== [Request HTTP Example]
+include::{snippets}/user-signup/http-request.adoc[]
+
+=== [Request Body]
+include::{snippets}/user-signup/request-body.adoc[]
+
+=== [Request Field]
+include::{snippets}/user-signup/request-fields.adoc[]
+
+== Response
+
+=== [Response HTTP Example]
+include::{snippets}/user-signup/http-response.adoc[]
+
+=== [Response Body]
+include::{snippets}/user-signup/response-body.adoc[]
+
+=== [Response Fields]
+include::{snippets}/user-signup/response-fields.adoc[]

@@ -1,0 +1,37 @@
+ifndef::snippets[]
+:snippets: ./build/generated-snippets
+endif::[]
+:doctype: book
+:icons: font
+:source-highlighter: highlightjs
+:toc: left
+:toclevels: 4
+:sectlinks:
+:site-url: /build/asciidoc/html5/
+
+== Category Create Request
+
+=== [Request URI]
+....
+POST /api/wiki/category/create
+Authorization: Bearer {token}
+Content-Type: application/json
+Accept: */*
+....
+
+=== [Request HTTP Example]
+include::{snippets}/wiki-category-create/http-request.adoc[]
+
+=== [Request Parameters]
+include::{snippets}/wiki-category-create/request-fields.adoc[]
+
+== Category Create Response
+
+=== [Response Fields]
+include::{snippets}/wiki-category-create/response-fields.adoc[]
+
+=== [Response HTTP Example]
+include::{snippets}/wiki-category-create/http-response.adoc[]
+
+=== [Response Body]
+include::{snippets}/wiki-category-create/response-body.adoc[]

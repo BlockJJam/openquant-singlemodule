@@ -1,0 +1,32 @@
+ifndef::snippets[]
+:snippets: ./build/generated-snippets
+endif::[]
+:doctype: book
+:icons: font
+:source-highlighter: highlightjs
+:toc: left
+:toclevels: 4
+:sectlinks:
+:site-url: /build/asciidoc/html5/
+
+== Symbol List Request
+
+=== [Request URI]
+....
+GET /api/md/symbol-list
+Content-Type: application/json
+....
+
+=== [Request HTTP Example]
+include::{snippets}/marketdata-symbol-list/http-request.adoc[]
+
+== Symbol List Response
+
+=== [Response HTTP Example]
+include::{snippets}/marketdata-symbol-list/http-response.adoc[]
+
+=== [Response Body]
+include::{snippets}/marketdata-symbol-list/response-body.adoc[]
+
+=== [Response Fields]
+include::{snippets}/marketdata-symbol-list/response-fields.adoc[]

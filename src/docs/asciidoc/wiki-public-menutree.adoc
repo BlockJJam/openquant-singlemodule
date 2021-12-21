@@ -1,0 +1,33 @@
+ifndef::snippets[]
+:snippets: ./build/generated-snippets
+endif::[]
+:doctype: book
+:icons: font
+:source-highlighter: highlightjs
+:toc: left
+:toclevels: 4
+:sectlinks:
+:site-url: /build/asciidoc/html5/
+
+== Public Menu Tree Request
+
+=== [Request URI]
+....
+GET /api/wiki/public/menu-tree
+Content-Type: application/json
+Accept: */*
+....
+
+=== [Request HTTP Example]
+include::{snippets}/wiki-public-menutree/http-request.adoc[]
+
+== Public Menu Tree Response
+
+=== [Response Fields]
+include::{snippets}/wiki-public-menutree/response-fields.adoc[]
+
+=== [Response HTTP Example]
+include::{snippets}/wiki-public-menutree/http-response.adoc[]
+
+=== [Response Body]
+include::{snippets}/wiki-public-menutree/response-body.adoc[]
