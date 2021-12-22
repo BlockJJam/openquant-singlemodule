@@ -4,7 +4,7 @@
 # - docker
 # - variables:
 
-statges:
+stages:
   - image
 
 docker_build:
