@@ -11,7 +11,7 @@ docker_build:
   tags:
     - Legacy
   only:
-    - main
+    - feat-ci-script
   stage: image
   image: docker:stable
   variables:
