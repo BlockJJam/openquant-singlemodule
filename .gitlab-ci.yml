@@ -19,7 +19,7 @@ docker_build:
   services:
     - docker:dind
   before_script:
-    - echo "$HARBOR_HOST" | echo "- $HARBOR_SPRING_USER" | echo "- $HARBOR_SPRING_PASSWORD"
+    - echo "$HARBOR_HOST ,$HARBOR_SPRING_USER, $HARBOR_SPRING_PASSWORD"
     - echo "$HARBOR_SPRING_PASSWORD" | docker login -u "$HARBOR_SPRING_LOGIN" --password-stdin
   script:
     - docker build -t $APP:$MAIN_VERSION --no-cache .
