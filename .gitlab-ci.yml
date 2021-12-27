@@ -17,7 +17,6 @@ gradle-build:
     - feat-ci-script
   script:
     - ./gradlew clean build
-    - ls build/
   artifacts:
     paths:
       - build/libs/*.jar
@@ -28,8 +27,6 @@ docker_build:
     - Legacy
   only:
     - feat-ci-script
-  stage: docker
-  image: docker:stable
   variables:
     DOCKER_OPTS: "--insecure-registry=$HARBOR_DOMAIN"
   services:
