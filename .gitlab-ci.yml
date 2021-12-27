@@ -19,7 +19,7 @@ gradle-build:
   only:
     - feat-ci-script
   script:
-    - "./gradlew clean build"
+    - ./gradlew clean build
   artifacts:
     paths:
       - build/lib/*.jar
