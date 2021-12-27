@@ -1,6 +1,5 @@
-FROM openjdk:11
-CMD ["./gradlew", "clean", "build"]
+FROM openjdk:11-jre-slim
 ARG JAR_FILE_PATH=build/libs/*.jar
-COPY ${JAR_FILE_PATH} /tmp/SpringApp.jar
-WORKDIR /tmp
+COPY ${JAR_FILE_PATH} /home/quant/SpringApp.jar
+WORKDIR /home/quant
 ENTRYPOINT ["java", "-jar","SpringApp.jar"]
