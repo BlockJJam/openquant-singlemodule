@@ -5,14 +5,26 @@
 # - variables:
 
 stages:
-  - image
+  - build
+  - docker
+
+gradle-build:
+  tags:
+    - Legacy
+  only:
+    - feat-ci-script
+  script:
+    - "./gradlew clean build"
+  artifacts:
+    paths:
+      - build/lib/*.jar
 
 docker_build:
   tags:
     - Legacy
   only:
     - feat-ci-script
-  stage: image
+  stage: docker
   image: docker:stable
   variables:
     DOCKER_OPTS: "--insecure-registry=$HARBOR_DOMAIN"

@@ -1,6 +1,5 @@
 FROM openjdk:11
-RUN ./gradlew clean build
 ARG JAR_FILE_PATH=build/libs/*.jar
-COPY ./build/libs/*.jar /tmp/SpringApp.jar
-WORKDIR /tmp
+COPY ${JAR_FILE_PATH} /home/quant/SpringApp.jar
+WORKDIR /home/quant
 ENTRYPOINT ["java", "-jar","SpringApp.jar"]
