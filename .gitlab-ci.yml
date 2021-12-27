@@ -19,7 +19,7 @@ gradle-build:
     - ls build/
   artifacts:
     paths:
-      - build/lib/*.jar
+      - build/libs/*.jar
 
 docker_build:
   tags:
