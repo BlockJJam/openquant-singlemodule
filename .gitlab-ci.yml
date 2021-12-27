@@ -11,6 +11,7 @@ stages:
 gradle-build:
   tags:
     - Legacy
+  stage: build
   only:
     - feat-ci-script
   script:
