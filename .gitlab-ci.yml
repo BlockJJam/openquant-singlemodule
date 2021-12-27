@@ -3,16 +3,12 @@
 # Using:
 # - docker
 # - variables:
-image: docker:dind
-services:
-  - docker:dind
 
 stages:
   - build
 #  - docker
 
 gradle-build:
-  image: openjdk:11-alpine
   tags:
     - Legacy
   stage: build
@@ -20,6 +16,7 @@ gradle-build:
     - feat-ci-script
   script:
     - ./gradlew clean build
+    - ls
   artifacts:
     paths:
       - build/lib/*.jar
