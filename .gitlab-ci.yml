@@ -5,23 +5,23 @@
 # - variables:$HARBOR_HOST, $HARBOR_SPRING_USER, $HARBOR_SPRING_PASSWORD, $HARBOR_SPRING_DOMAIN, $APP, $PROJECT, $MAIN_VERSION,
 
 stages:
-  - build
+#  - build
   - docker
 
 # @desc: gitlab SaaS를 활용하지 않고 CI서버를 설치하여 사용하기 때문에, shell script 명령어를 사용하면서 docker 이미지가 아닌 OS에 java를 직접 설치해주고 다음 gradle-build를 사용한다
-gradle-build:
-  tags:
-    - Legacy
-  stage: build
-  only:
-    - feat-ci-script
-  script:
-    - ./gradlew clean build
-    - ls build/
-  artifacts:
-    paths:
-      - build/libs/*.jar
-    expire_in: 30 days
+#gradle-build:
+#  tags:
+#    - Legacy
+#  stage: build
+#  only:
+#    - feat-ci-script
+#  script:
+#    - ./gradlew clean build
+#    - ls build/
+#  artifacts:
+#    paths:
+#      - build/libs/*.jar
+#    expire_in: 30 days
 
 docker_build:
   tags:
@@ -45,6 +45,6 @@ docker_build:
     - docker tag $APP:$MAIN_VERSION $HARBOR_DOMAIN/$PROJECT/$APP:$MAIN_VERSION
     # latest version ArgoCD에서 확인할 수 있도록 추가
     - docker tag $HARBOR_DOMAIN/$PROJECT/$APP:$MAIN_VERSION $HARBOR_DOMAIN/$PROJECT/$APP:latest
-    - docker push $HARBOR_HOST/$PROJECT/$APP:$MAIN_VERSION
-    - docker push $HARBOR_HOST/$PROJECT/$APP:latest
+    - docker push $HARBOR_DOMAIN/$PROJECT/$APP:$MAIN_VERSION
+    - docker push $HARBOR_DOMAIN/$PROJECT/$APP:latest
 
