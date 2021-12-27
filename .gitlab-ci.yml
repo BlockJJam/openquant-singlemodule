@@ -9,6 +9,7 @@ stages:
   - docker
 
 gradle-build:
+  image: openjdk:11-alpine
   tags:
     - Legacy
   stage: build
