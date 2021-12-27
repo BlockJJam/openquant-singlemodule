@@ -2,11 +2,11 @@
 # Legacy CI script for harbor( CD script: ArgoCD)
 # Using:
 # - docker
-# - variables:
+# - variables:$HARBOR_HOST, $HARBOR_SPRING_USER, $HARBOR_SPRING_PASSWORD, $HARBOR_SPRING_DOMAIN, $APP, $PROJECT, $MAIN_VERSION,
 
 stages:
   - build
-#  - docker
+  - docker
 
 gradle-build:
   tags:
@@ -16,33 +16,33 @@ gradle-build:
     - feat-ci-script
   script:
     - ./gradlew clean build
-    - ls build/lib
+    - ls build/
   artifacts:
     paths:
       - build/lib/*.jar
 
-#docker_build:
-#  tags:
-#    - Legacy
-#  only:
-#    - feat-ci-script
-#  stage: docker
-#  image: docker:stable
-#  variables:
-#    DOCKER_OPTS: "--insecure-registry=$HARBOR_DOMAIN"
-#  services:
-#    - docker:dind
-#  before_script:
-#    - echo "$HARBOR_HOST ,$HARBOR_SPRING_USER, $HARBOR_SPRING_PASSWORD"
-#    - echo "$HARBOR_SPRING_PASSWORD" | docker login $HARBOR_HOST -u "$HARBOR_SPRING_USER" --password-stdin
-#  script:
-#    - pwd
-#    - ls
-#    # copy: no source 에러의 경우 context( build를 실행한 시점의 현 디렉토리)의 위치가 local 환경과 다르기 때문에 docker build가 실행되는 디랙터리 위치를 파악해야 한다
-#    - docker build -t $APP:$MAIN_VERSION --no-cache .
-#    - docker tag $APP:$MAIN_VERSION $HARBOR_HOST/$PROJECT/$APP:$MAIN_VERSION
-#    # latest version ArgoCD에서 확인할 수 있도록 추가
-#    - docker tag $HARBOR_HOST/$PROJECT/$APP:$MAIN_VERSION $HARBOR_HOST/$PROJECT/$APP:latest
-#    - docker push $HARBOR_HOST/$PROJECT/$APP:$MAIN_VERSION
-#    - docker push $HARBOR_HOST/$PROJECT/$APP:latest
+docker_build:
+  tags:
+    - Legacy
+  only:
+    - feat-ci-script
+  stage: docker
+  image: docker:stable
+  variables:
+    DOCKER_OPTS: "--insecure-registry=$HARBOR_DOMAIN"
+  services:
+    - docker:dind
+  before_script:
+    - echo "$HARBOR_HOST ,$HARBOR_SPRING_USER, $HARBOR_SPRING_PASSWORD"
+    - echo "$HARBOR_SPRING_PASSWORD" | docker login $HARBOR_HOST -u "$HARBOR_SPRING_USER" --password-stdin
+  script:
+    - pwd
+    - ls
+    # copy: no source 에러의 경우 context( build를 실행한 시점의 현 디렉토리)의 위치가 local 환경과 다르기 때문에 docker build가 실행되는 디랙터리 위치를 파악해야 한다
+    - docker build -t $APP:$MAIN_VERSION --no-cache .
+    - docker tag $APP:$MAIN_VERSION $HARBOR_HOST/$PROJECT/$APP:$MAIN_VERSION
+    # latest version ArgoCD에서 확인할 수 있도록 추가
+    - docker tag $HARBOR_HOST/$PROJECT/$APP:$MAIN_VERSION $HARBOR_HOST/$PROJECT/$APP:latest
+    - docker push $HARBOR_HOST/$PROJECT/$APP:$MAIN_VERSION
+    - docker push $HARBOR_HOST/$PROJECT/$APP:latest
 
