@@ -27,6 +27,7 @@ docker_build:
     - Legacy
   only:
     - feat-ci-script
+  stage: docker
   variables:
     DOCKER_OPTS: "--insecure-registry=$HARBOR_DOMAIN"
   services:
