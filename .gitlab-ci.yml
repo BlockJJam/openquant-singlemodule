@@ -28,8 +28,6 @@ docker_build:
   only:
     - feat-ci-script
   stage: docker
-  variables:
-    DOCKER_OPTS: "--insecure-registry=$HARBOR_DOMAIN"
   before_script:
     - echo "$HARBOR_HOST ,$HARBOR_SPRING_USER, $HARBOR_SPRING_PASSWORD, $HARBOR_DOMAIN"
     - echo "$HARBOR_SPRING_PASSWORD" | docker login $HARBOR_HOST -u "$HARBOR_SPRING_USER" --password-stdin
