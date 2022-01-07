@@ -3,7 +3,7 @@
 # Using:
 # - docker
 # - variables:$HARBOR_HOST, $HARBOR_SPRING_USER, $HARBOR_SPRING_PASSWORD, $HARBOR_SPRING_DOMAIN, $APP, $PROJECT, $MAIN_VERSION,
-
+# test
 stages:
   - build_main
   - docker_main
