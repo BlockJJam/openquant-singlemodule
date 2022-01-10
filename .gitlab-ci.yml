@@ -101,13 +101,13 @@ update_manifest_repo:
 #    - chmod 600 /root/.ssh/id_rsa
     # Git
 #    - apt add --no-cache git
-    - echo "$GIT_USER_NAME, $GIT_USER_EMAIL, $CD_GIT_REPOSITORY "
+    - echo "$GIT_USER_NAME, $GIT_USER_EMAIL, $CD_GIT_REPOSITORY"
     - git config --global user.name $GIT_USER_NAME
     - git config --global user.email $GIT_USER_EMAIL
     - git clone --single-branch --branch main $CD_GIT_REPOSITORY
     - cd oq-chart/
     # Helm
-    - sed -i 's/appVersion:.*/appVersion: ${MAIN_VERSION}/g' oq-dev/Chart.yaml
+    - sed -i 's/appVersion:.*/appVersion:${MAIN_V}/g' oq-dev/Chart.yaml
     - cat oq-dev/Chart.yaml
 #    - git add .
 #    - git commit -m "test"
