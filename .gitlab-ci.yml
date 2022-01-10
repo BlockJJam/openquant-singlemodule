@@ -9,6 +9,7 @@ stages:
   - docker_main
   - build_product
   - docker_product
+  - update_deploy_repo
 
 # @desc: gitlab SaaS를 활용하지 않고 CI서버를 설치하여 사용하기 때문에, shell script 명령어를 사용하면서 docker 이미지가 아닌 OS에 java를 직접 설치해주고 다음 gradle-build를 사용한다
 gradle-build_main:
@@ -17,6 +18,7 @@ gradle-build_main:
   stage: build_main
   only:
     - main
+  retry: 2
   script:
     - ./gradlew clean build
   artifacts:
@@ -30,6 +32,7 @@ docker_build_main:
   only:
     - main
   stage: docker_main
+  retry: 2
   before_script:
     - echo "$HARBOR_HOST ,$HARBOR_SPRING_USER, $HARBOR_SPRING_PASSWORD, $HARBOR_DOMAIN"
     - echo "$HARBOR_SPRING_PASSWORD" | docker login $HARBOR_HOST -u "$HARBOR_SPRING_USER" --password-stdin
@@ -51,6 +54,7 @@ gradle-build_product:
   stage: build_product
   only:
     - production
+    - retry: 2
   script:
     - ./gradlew clean build
   artifacts:
@@ -64,6 +68,7 @@ docker_build_product:
   only:
     - production
   stage: docker_product
+  retry: 2
   before_script:
     - echo "$HARBOR_HOST ,$HARBOR_SPRING_USER, $HARBOR_SPRING_PASSWORD, $HARBOR_DOMAIN"
     - echo "$HARBOR_SPRING_PASSWORD" | docker login $HARBOR_HOST -u "$HARBOR_SPRING_USER" --password-stdin
@@ -79,3 +84,22 @@ docker_build_product:
     - docker push $HARBOR_DOMAIN/$PROJECT/$APP:latest
 
 # test script
+update_manifest_repo:
+  stage: update_deploy_repo
+  variables:
+    GIT_STRATEGY: none
+  retry: 2
+  script:
+    # Add SSH key to root
+#    - mkdir -p /root/.ssh
+#    - echo "$SSH_PRIVATE_KEY" > /root/.ssh/id_rssa
+#    - ssh-keyscan -H gitlab.cherry-solutions.com > /root/.ssh/known_hosts
+#    - chmod 600 /root/.ssh/id_rsa
+    # Git
+    - apt add --no-cache git
+    - git config -- global user.name $APP_NAME
+    - git config -- global user.email $APP_EMAIL
+    - git clone --single-branch --branch main $CD_GIT_REPOSITORY
+    - cd $CD_CHART_REPO
+    # Helm
+
