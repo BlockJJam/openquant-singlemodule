@@ -94,7 +94,7 @@ update_manifest_repo:
   script:
     # Add SSH key to root
 #    - mkdir -p /root/.ssh
-#    - echo "$SSH_PRIVATE_KEY" > /root/.ssh/id_rssa
+#    - echo "$SSH_PRIVATE_KEY" > /root/.ssh/id_rsa
 #    - ssh-keyscan -H gitlab.cherry-solutions.com > /root/.ssh/known_hosts
 #    - chmod 600 /root/.ssh/id_rsa
     # Git
@@ -102,8 +102,8 @@ update_manifest_repo:
     - echo "$GIT_USER_NAME, $GIT_USER_EMAIL, $CD_GIT_REPOSITORY "
     - git config --global user.name $GIT_USER_NAME
     - git config --global user.email $GIT_USER_EMAIL
-    - git clone $CD_GIT_REPOSITORY
+    - git clone --single-branch --branch main $CD_GIT_REPOSITORY
+    - cd oq-chart/oq-dev/
     - ls
-
     # Helm
 
