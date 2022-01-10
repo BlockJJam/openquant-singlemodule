@@ -109,6 +109,7 @@ update_manifest_repo:
     - ls
     # Helm
     - echo "event push" > dummy.log
+    - git add .
     - git commit -m "test"
     - git push
 
