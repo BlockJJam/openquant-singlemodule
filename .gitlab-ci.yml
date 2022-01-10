@@ -54,7 +54,7 @@ gradle-build_product:
   stage: build_product
   only:
     - production
-    - retry: 2
+  retry: 2
   script:
     - ./gradlew clean build
   artifacts:
