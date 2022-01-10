@@ -77,3 +77,5 @@ docker_build_product:
     - docker tag $HARBOR_DOMAIN/$PROJECT/$APP:$MAIN_VERSION $HARBOR_DOMAIN/$PROJECT/$APP:latest
     - docker push $HARBOR_DOMAIN/$PROJECT/$APP:$MAIN_VERSION
     - docker push $HARBOR_DOMAIN/$PROJECT/$APP:latest
+
+# test script
