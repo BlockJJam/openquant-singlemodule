@@ -107,7 +107,7 @@ update_manifest_repo:
     - git clone --single-branch --branch main $CD_GIT_REPOSITORY
     - cd oq-chart/
     # Helm
-    - echo "$MAIN_VERSION"
+    - main_version= "$MAIN_VERSION"
     - sed -i 's/".*"/"$main_version"/g' oq-dev/Chart.yaml
     - cat oq-dev/Chart.yaml
     - git add .
