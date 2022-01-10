@@ -105,7 +105,9 @@ update_manifest_repo:
     - git config --global user.name $GIT_USER_NAME
     - git config --global user.email $GIT_USER_EMAIL
     - git clone --single-branch --branch main $CD_GIT_REPOSITORY
-    - cd oq-chart/oq-dev/
+    - cd oq-chart/
     - ls
     # Helm
+    - git commit -m "test"
+    - git push
 
