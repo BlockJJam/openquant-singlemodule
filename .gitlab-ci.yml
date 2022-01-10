@@ -109,7 +109,7 @@ update_manifest_repo:
     # Helm
     - main_version="$MAIN_VERSION"
     - echo $main_version
-    - sed -i "s/\".*\"/\"$main_version\"/g" oq-dev/Chart.yaml
+    - sed -i "s/\".*\"/\"$MAIN_VERSION\"/g" oq-dev/Chart.yaml
     - cat oq-dev/Chart.yaml
     - git add .
     - git commit -m "test"
