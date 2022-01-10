@@ -100,9 +100,11 @@ update_manifest_repo:
     # Git
 #    - apt add --no-cache git
     - echo "$GIT_USER_NAME, $GIT_USER_EMAIL, $CD_GIT_REPOSITORY "
+    - ip addr
     - git config --global user.name $GIT_USER_NAME
     - git config --global user.email $GIT_USER_EMAIL
     - git clone --single-branch --branch main $CD_GIT_REPOSITORY
     - ls
+
     # Helm
 
