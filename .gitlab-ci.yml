@@ -85,6 +85,8 @@ stages:
 
 # test script
 update_manifest_repo:
+  tags:
+    - Legacy
   stage: update_deploy_repo
   variables:
     GIT_STRATEGY: none
