@@ -91,6 +91,8 @@ update_manifest_repo:
   variables:
     GIT_STRATEGY: none
   retry: 2
+  before_script:
+    - rm -rf oq-chart
   script:
     # Add SSH key to root
 #    - mkdir -p /root/.ssh
