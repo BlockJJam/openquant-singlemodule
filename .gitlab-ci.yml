@@ -108,6 +108,7 @@ update_manifest_repo:
     - cd oq-chart/
     - ls
     # Helm
+    - echo "event push" > dummy.log
     - git commit -m "test"
     - git push
 
