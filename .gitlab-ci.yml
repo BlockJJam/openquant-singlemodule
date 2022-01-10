@@ -5,10 +5,10 @@
 # - variables:$HARBOR_HOST, $HARBOR_SPRING_USER, $HARBOR_SPRING_PASSWORD, $HARBOR_SPRING_DOMAIN, $APP, $PROJECT, $MAIN_VERSION,
 # test
 stages:
-#  - build_main
-#  - docker_main
-#  - build_product
-#  - docker_product
+  - build_main
+  - docker_main
+  - build_product
+  - docker_product
   - update_deploy_repo
 
 # @desc: gitlab SaaS를 활용하지 않고 CI서버를 설치하여 사용하기 때문에, shell script 명령어를 사용하면서 docker 이미지가 아닌 OS에 java를 직접 설치해주고 다음 gradle-build를 사용한다
