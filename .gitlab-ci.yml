@@ -100,7 +100,7 @@ update_manifest_repo:
     - git config --global user.email $GIT_USER_EMAIL
     - git clone --single-branch --branch main $CD_GIT_REPOSITORY
     - cd oq-chart/
-    # Helm
+    # Helm, TEST
     - sed -i "s/appVersion:.*/appVersion:\ \"$MAIN_VERSION\"/g" oq-dev/Chart.yaml
     - cat oq-dev/Chart.yaml
     - git add .
