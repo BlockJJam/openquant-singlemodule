@@ -16,6 +16,10 @@ spring:
     url: jdbc:postgresql://3.36.78.50:5432/postgres
     username: oq_users
     password: OqTellUs12#$
+    hikari:
+      maximum-pool-size: 10
+      idle-timeout: 600000
+      max-lifetime: 1800000
   # JPA config
   jpa:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
@@ -46,7 +50,7 @@ spring:
 
 # Logging tool( log4j2 ) config
 logging:
-  config: classpath:log4j2-local.yml
+  config: classpath:log4j2-deploy.yml
 
 # JWT config
 jwt:
