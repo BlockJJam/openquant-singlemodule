@@ -3,12 +3,13 @@
 # Using:
 # - docker
 # - variables:$HARBOR_HOST, $HARBOR_SPRING_USER, $HARBOR_SPRING_PASSWORD, $HARBOR_SPRING_DOMAIN, $APP, $PROJECT, $MAIN_VERSION,
-
+# test
 stages:
   - build_main
   - docker_main
   - build_product
   - docker_product
+  - update_deploy_repo
 
 # @desc: gitlab SaaS를 활용하지 않고 CI서버를 설치하여 사용하기 때문에, shell script 명령어를 사용하면서 docker 이미지가 아닌 OS에 java를 직접 설치해주고 다음 gradle-build를 사용한다
 gradle-build_main:
@@ -17,6 +18,7 @@ gradle-build_main:
   stage: build_main
   only:
     - main
+  retry: 2
   script:
     - ./gradlew clean build
   artifacts:
@@ -30,6 +32,7 @@ docker_build_main:
   only:
     - main
   stage: docker_main
+  retry: 2
   before_script:
     - echo "$HARBOR_HOST ,$HARBOR_SPRING_USER, $HARBOR_SPRING_PASSWORD, $HARBOR_DOMAIN"
     - echo "$HARBOR_SPRING_PASSWORD" | docker login $HARBOR_HOST -u "$HARBOR_SPRING_USER" --password-stdin
@@ -51,6 +54,7 @@ gradle-build_product:
   stage: build_product
   only:
     - production
+  retry: 2
   script:
     - ./gradlew clean build
   artifacts:
@@ -64,6 +68,7 @@ docker_build_product:
   only:
     - production
   stage: docker_product
+  retry: 2
   before_script:
     - echo "$HARBOR_HOST ,$HARBOR_SPRING_USER, $HARBOR_SPRING_PASSWORD, $HARBOR_DOMAIN"
     - echo "$HARBOR_SPRING_PASSWORD" | docker login $HARBOR_HOST -u "$HARBOR_SPRING_USER" --password-stdin
@@ -77,3 +82,27 @@ docker_build_product:
     - docker tag $HARBOR_DOMAIN/$PROJECT/$APP:$MAIN_VERSION $HARBOR_DOMAIN/$PROJECT/$APP:latest
     - docker push $HARBOR_DOMAIN/$PROJECT/$APP:$MAIN_VERSION
     - docker push $HARBOR_DOMAIN/$PROJECT/$APP:latest
+
+# test script
+update_manifest_repo:
+  tags:
+    - Legacy
+  stage: update_deploy_repo
+  variables:
+    GIT_STRATEGY: none
+  retry: 2
+  before_script:
+    - rm -rf oq-chart
+  script:
+    # Add SSH key to root
+    - echo "$GIT_USER_NAME, $GIT_USER_EMAIL, $CD_GIT_REPOSITORY"
+    - git config --global user.name $GIT_USER_NAME
+    - git config --global user.email $GIT_USER_EMAIL
+    - git clone --single-branch --branch main $CD_GIT_REPOSITORY
+    - cd oq-chart/
+    # Helm, TEST
+    - sed -i "s/appVersion:.*/appVersion:\ \"$MAIN_VERSION\"/g" oq-dev/Chart.yaml
+    - cat oq-dev/Chart.yaml
+    - git add .
+    - git commit -m "test"
+    - git push
