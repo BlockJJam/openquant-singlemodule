@@ -19,7 +19,7 @@ spring:
     hikari:
       maximum-pool-size: 10
       idle-timeout: 600000
-      max-lifetime: 180000 # 1000 * 60 * 30분
+      max-lifetime: 1800000 # 1000ms * 60s * 30m
   # JPA config
   jpa:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
