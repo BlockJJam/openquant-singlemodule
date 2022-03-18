@@ -57,6 +57,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/api/signup","/api/signup/**").permitAll()
                 .antMatchers("/api/login").permitAll() // <- login에 대한 접근은 모두 허용
                 .antMatchers("/api/md/**", "/api/wiki/**").permitAll()
+                .antMatchers("/api/historical/**").permitAll() // historical 에 대한 접근 모두 허용
                 .antMatchers("/actuator/**").permitAll() // 모니터링 url 열어주기
                 .antMatchers("/js/**","/css/**", "/img/**","/favicon.ico","/resources/docs/**").permitAll()
                 // (below) page 요청으로 들어오는 모든 request를 허용하고, 이를 ../route/WebMvcConfig.java 에서 controller가 없는 경우 index.html로 라우팅을 해준다
