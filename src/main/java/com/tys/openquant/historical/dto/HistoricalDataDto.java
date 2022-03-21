@@ -6,29 +6,38 @@ import com.tys.openquant.domain.price.MinData;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.apache.tomcat.jni.Local;
+import lombok.Setter;
 
-import javax.validation.constraints.Min;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
+
+// has_symbol_code, is_allowed 필드를 채워서 리턴할 것이다.
+// 방법은 여러가지 static 메서드, 생성자, builder 여러가지
 public class HistoricalDataDto {
 
     @Getter
-    public static class StrategyDayDataPriceListDto {
-        private List<StrategyDayDataDto> strategyDayDataDtoList;
+    @Setter
+    public static class StrategyDayDataListDto {
+        private List<StrategyDayDataDto> data;
+        @JsonProperty("has_symbol_code")
+        private boolean hasSymbolCode;
+        @JsonProperty("allowed_date_range")
+        private boolean allowedDateRange;
 
-        public StrategyDayDataPriceListDto(List<DayData> dataList) {
-            this.strategyDayDataDtoList = dataList.stream()
-                    .map(d -> new HistoricalDataDto.StrategyDayDataDto(d))
-                    .collect(Collectors.toList());
+        public StrategyDayDataListDto(List<DayData> dataList, boolean hasSymbolCode, boolean allowedDateRange) {
+            this.data = dataList.stream()
+                        .map(HistoricalDataDto.StrategyDayDataDto::new)
+                        .collect(Collectors.toList());
+            this.hasSymbolCode = hasSymbolCode;
+            this.allowedDateRange = allowedDateRange;
         }
+
     }
 
     @Getter
-    @NoArgsConstructor
     public static class StrategyDayDataDto {
         @JsonProperty("daydata_code")
         private String code;
@@ -45,12 +54,12 @@ public class HistoricalDataDto {
     }
 
     @Getter
-    public static class StrategyMinDataPriceListDto {
-        private List<StrategyMinDataDto> strategyMinDataDtoList;
+    public static class StrategyMinDataListDto {
+        private List<StrategyMinDataDto> data;
 
-        public StrategyMinDataPriceListDto(List<MinData> dataList) {
-            this.strategyMinDataDtoList = dataList.stream()
-                    .map(d -> new HistoricalDataDto.StrategyMinDataDto(d))
+        public StrategyMinDataListDto(List<MinData> dataList) {
+            this.data = dataList.stream()
+                    .map(HistoricalDataDto.StrategyMinDataDto::new)
                     .collect(Collectors.toList());
         }
     }
@@ -74,12 +83,12 @@ public class HistoricalDataDto {
 
     @Getter
     @NoArgsConstructor
-    public static class ChartDayDataPriceListDto {
-        private List<ChartDayDataDto> chartDayDataListDtoList;
+    public static class ChartDayDataListDto {
+        private List<ChartDayDataDto> data;
 
-        public ChartDayDataPriceListDto(List<DayData> dayDataList) {
-            this.chartDayDataListDtoList = dayDataList.stream()
-                    .map(d -> new HistoricalDataDto.ChartDayDataDto(d))
+        public ChartDayDataListDto(List<DayData> dayDataList) {
+            this.data = dayDataList.stream()
+                    .map(HistoricalDataDto.ChartDayDataDto::new)
                     .collect(Collectors.toList());
         }
     }
@@ -114,12 +123,12 @@ public class HistoricalDataDto {
     }
 
     @Getter
-    public static class ChartMinDataPriceListDto {
-        private List<ChartMinDataDto> chartMinDataDtoList;
+    public static class ChartMinDataListDto {
+        private List<ChartMinDataDto> data;
 
-        public ChartMinDataPriceListDto(List<MinData> minDataList) {
-            this.chartMinDataDtoList = minDataList.stream()
-                    .map(d -> new HistoricalDataDto.ChartMinDataDto(d))
+        public ChartMinDataListDto(List<MinData> minDataList) {
+            this.data = minDataList.stream()
+                    .map(HistoricalDataDto.ChartMinDataDto::new)
                     .collect(Collectors.toList());
         }
     }

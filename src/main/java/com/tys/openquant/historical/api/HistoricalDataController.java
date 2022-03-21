@@ -2,10 +2,8 @@ package com.tys.openquant.historical.api;
 
 import com.tys.openquant.historical.dto.HistoricalDataDto;
 import com.tys.openquant.historical.service.HistoricalDataService;
-import com.tys.openquant.marketdata.dto.DayDataDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.coyote.Response;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -27,7 +25,7 @@ public class HistoricalDataController {
     private final HistoricalDataService historicalDataService;
 
     @GetMapping("/strategy/daydata")
-    public ResponseEntity<HistoricalDataDto.StrategyDayDataPriceListDto> getStrategyDayData(
+    public ResponseEntity<HistoricalDataDto.StrategyDayDataListDto> getStrategyDayData(
             @NotBlank
             @RequestParam("symbol_code") String symbolCode,
             @DateTimeFormat(pattern="yyyy-MM-dd") @RequestParam("start_date") LocalDate startDate,
@@ -35,32 +33,31 @@ public class HistoricalDataController {
         return ResponseEntity.ok(historicalDataService.getDayDataClosePriceListForStrategy(symbolCode, startDate, endDate));
     }
 
-    @GetMapping("/strategy/mindata")
-    public ResponseEntity<HistoricalDataDto.StrategyMinDataPriceListDto> getStrategyMinData(
-        @NotBlank
-        @RequestParam("symbol_code") String symbolCode,
-        @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) @RequestParam("start_datetime") LocalDateTime startDateTime,
-        @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) @RequestParam("end_datetime") LocalDateTime endDateTime) {
-
-        return ResponseEntity.ok(historicalDataService.getMinDataClosePriceListForStrategy(symbolCode, startDateTime, endDateTime));
-    }
-
-    @GetMapping("/chart/daydata")
-    public ResponseEntity<HistoricalDataDto.ChartDayDataPriceListDto> getChartDayData(
-            @NotBlank
-            @RequestParam("symbol_code") String symbolCode,
-            @DateTimeFormat(pattern="yyyy-MM-dd") @RequestParam("start_date") LocalDate startDate,
-            @DateTimeFormat(pattern="yyyy-MM-dd") @RequestParam("end_date") LocalDate endDate) {
-        return ResponseEntity.ok(historicalDataService.getDayDataClosePriceListForChart(symbolCode, startDate, endDate));
-    }
-
-    @GetMapping("/chart/mindata")
-    public ResponseEntity<HistoricalDataDto.ChartMinDataPriceListDto> getChartMinData(
-            @NotBlank
-            @RequestParam("symbol_code") String symbolCode,
-            @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) @RequestParam("start_datetime") LocalDateTime startDateTime,
-            @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) @RequestParam("end_datetime") LocalDateTime endDateTime) {
-        return ResponseEntity.ok(historicalDataService.getMinDataClosePriceListForChart(symbolCode, startDateTime, endDateTime));
-    }
+//    @GetMapping("/strategy/mindata")
+//    public ResponseEntity<HistoricalDataDto.StrategyMinDataListDto> getStrategyMinData(
+//        @NotBlank
+//        @RequestParam("symbol_code") String symbolCode,
+//        @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) @RequestParam("start_datetime") LocalDateTime startDateTime,
+//        @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) @RequestParam("end_datetime") LocalDateTime endDateTime) {
+//        return ResponseEntity.ok(historicalDataService.getMinDataClosePriceListForStrategy(symbolCode, startDateTime, endDateTime));
+//    }
+//
+//    @GetMapping("/chart/daydata")
+//    public ResponseEntity<HistoricalDataDto.ChartDayDataListDto> getChartDayData(
+//            @NotBlank
+//            @RequestParam("symbol_code") String symbolCode,
+//            @DateTimeFormat(pattern="yyyy-MM-dd") @RequestParam("start_date") LocalDate startDate,
+//            @DateTimeFormat(pattern="yyyy-MM-dd") @RequestParam("end_date") LocalDate endDate) {
+//        return ResponseEntity.ok(historicalDataService.getDayDataClosePriceListForChart(symbolCode, startDate, endDate));
+//    }
+//
+//    @GetMapping("/chart/mindata")
+//    public ResponseEntity<HistoricalDataDto.ChartMinDataListDto> getChartMinData(
+//            @NotBlank
+//            @RequestParam("symbol_code") String symbolCode,
+//            @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) @RequestParam("start_datetime") LocalDateTime startDateTime,
+//            @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) @RequestParam("end_datetime") LocalDateTime endDateTime) {
+//        return ResponseEntity.ok(historicalDataService.getMinDataClosePriceListForChart(symbolCode, startDateTime, endDateTime));
+//    }
 
 }
