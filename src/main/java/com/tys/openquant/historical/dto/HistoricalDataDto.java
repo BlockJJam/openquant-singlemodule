@@ -20,6 +20,8 @@ public class HistoricalDataDto {
 
     @Getter
     @Setter
+    @AllArgsConstructor
+    @NoArgsConstructor
     public static class StrategyDayDataListDto {
         private List<StrategyDayDataDto> data;
         @JsonProperty("has_symbol_code")
@@ -27,13 +29,23 @@ public class HistoricalDataDto {
         @JsonProperty("allowed_date_range")
         private boolean allowedDateRange;
 
-        public StrategyDayDataListDto(List<DayData> dataList, boolean hasSymbolCode, boolean allowedDateRange) {
+        public void toStrategyDayDataListDto(List<DayData> dataList) {
             this.data = dataList.stream()
-                        .map(HistoricalDataDto.StrategyDayDataDto::new)
-                        .collect(Collectors.toList());
+                    .map(HistoricalDataDto.StrategyDayDataDto::new)
+                    .collect(Collectors.toList());
+        }
+
+        /**
+         * 해당 DTO 에 종목 코드 존재 여부 및 사용자 입력 시간의 순서 유효성 검증 결과를 저장하는 메서드
+         * @param hasSymbolCode: 해당 코드의 종목 존재 여부, 존재할 시 true, 반대 경우 false
+         * @param allowedDateRange: 시간시간, 종료시간 순서 유효성 검증 결과. 적절할 시 true, 반대 경우 false
+         * @author kyung.kim
+         */
+        public void fillAuthForHistoricalData(boolean hasSymbolCode, boolean allowedDateRange) {
             this.hasSymbolCode = hasSymbolCode;
             this.allowedDateRange = allowedDateRange;
         }
+
 
     }
 
@@ -57,11 +69,28 @@ public class HistoricalDataDto {
     public static class StrategyMinDataListDto {
         private List<StrategyMinDataDto> data;
 
-        public StrategyMinDataListDto(List<MinData> dataList) {
+        @JsonProperty("has_symbol_code")
+        boolean hasSymbolCode;
+        @JsonProperty("allowed_date_range")
+        boolean allowedDateRange;
+
+        public void toStrategyMinDataListDto(List<MinData> dataList) {
             this.data = dataList.stream()
                     .map(HistoricalDataDto.StrategyMinDataDto::new)
                     .collect(Collectors.toList());
         }
+
+        /**
+         * 해당 DTO 에 종목 코드 존재 여부 및 사용자 입력 시간의 순서 유효성 검증 결과를 저장하는 메서드
+         * @param hasSymbolCode: 해당 코드의 종목 존재 여부, 존재할 시 true, 반대 경우 false
+         * @param allowedDateRange: 시간시간, 종료시간 순서 유효성 검증 결과. 적절할 시 true, 반대 경우 false
+         * @author kyung.kim
+         */
+        public void fillAuthForHistoricalData(boolean hasSymbolCode, boolean allowedDateRange) {
+            this.hasSymbolCode = hasSymbolCode;
+            this.allowedDateRange = allowedDateRange;
+        }
+
     }
 
     @Getter
@@ -86,11 +115,29 @@ public class HistoricalDataDto {
     public static class ChartDayDataListDto {
         private List<ChartDayDataDto> data;
 
-        public ChartDayDataListDto(List<DayData> dayDataList) {
-            this.data = dayDataList.stream()
+        @JsonProperty("has_symbol_code")
+        boolean hasSymbolCode;
+        @JsonProperty("allowed_date_range")
+        boolean allowedDateRange;
+
+        public void toStrategyMinDataListDto(List<DayData> dataList) {
+            this.data = dataList.stream()
                     .map(HistoricalDataDto.ChartDayDataDto::new)
                     .collect(Collectors.toList());
         }
+
+
+        /**
+         * 해당 DTO 에 종목 코드 존재 여부 및 사용자 입력 시간의 순서 유효성 검증 결과를 저장하는 메서드
+         * @param hasSymbolCode: 해당 코드의 종목 존재 여부, 존재할 시 true, 반대 경우 false
+         * @param allowedDateRange: 시간시간, 종료시간 순서 유효성 검증 결과. 적절할 시 true, 반대 경우 false
+         * @author kyung.kim
+         */
+        public void fillAuthForHistoricalData(boolean hasSymbolCode, boolean allowedDateRange) {
+            this.hasSymbolCode = hasSymbolCode;
+            this.allowedDateRange = allowedDateRange;
+        }
+
     }
 
 
@@ -126,11 +173,28 @@ public class HistoricalDataDto {
     public static class ChartMinDataListDto {
         private List<ChartMinDataDto> data;
 
-        public ChartMinDataListDto(List<MinData> minDataList) {
-            this.data = minDataList.stream()
+        @JsonProperty("has_symbol_code")
+        boolean hasSymbolCode;
+        @JsonProperty("allowed_date_range")
+        boolean allowedDateRange;
+
+        public void toStrategyMinDataListDto(List<MinData> dataList) {
+            this.data = dataList.stream()
                     .map(HistoricalDataDto.ChartMinDataDto::new)
                     .collect(Collectors.toList());
         }
+
+        /**
+         * 해당 DTO 에 종목 코드 존재 여부 및 사용자 입력 시간의 순서 유효성 검증 결과를 저장하는 메서드
+         * @param hasSymbolCode: 해당 코드의 종목 존재 여부, 존재할 시 true, 반대 경우 false
+         * @param allowedDateRange: 시간시간, 종료시간 순서 유효성 검증 결과. 적절할 시 true, 반대 경우 false
+         * @author kyung.kim
+         */
+        public void fillAuthForHistoricalData(boolean hasSymbolCode, boolean allowedDateRange) {
+            this.hasSymbolCode = hasSymbolCode;
+            this.allowedDateRange = allowedDateRange;
+        }
+
     }
 
     @Getter
