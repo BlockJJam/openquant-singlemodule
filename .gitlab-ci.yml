@@ -87,6 +87,8 @@ docker_build_product:
 update_manifest_repo:
   tags:
     - Legacy
+  only:
+    - main
   stage: update_deploy_repo
   variables:
     GIT_STRATEGY: none
