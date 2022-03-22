@@ -51,15 +51,13 @@ public class HistoricalDataDto {
 
     @Getter
     public static class StrategyDayDataDto {
-        @JsonProperty("daydata_code")
-        private String code;
+
         @JsonProperty("daydata_date")
         private LocalDate date;
-        @JsonProperty("daydata_close")
+        @JsonProperty("close")
         private Integer closePrice;
 
         public StrategyDayDataDto(DayData dayData){
-            this.code = dayData.getCode();
             this.date = dayData.getDate();
             this.closePrice = dayData.getBasePrice().getClosePrice();
         }
@@ -95,15 +93,12 @@ public class HistoricalDataDto {
 
     @Getter
     public static class StrategyMinDataDto{
-        @JsonProperty("mindata_code")
-        private String code;
         @JsonProperty("mindata_datetime")
         private LocalDateTime dateTime;
-        @JsonProperty("mindata_close")
+        @JsonProperty("close")
         private Integer closePrice;
 
         public StrategyMinDataDto(MinData minData) {
-            this.code = minData.getCode();
             this.dateTime = minData.getDateTime();
             this.closePrice = minData.getBasePrice().getClosePrice();
         }
@@ -147,7 +142,7 @@ public class HistoricalDataDto {
         private String code;
         @JsonProperty("daydata_date")
         private LocalDate date;
-        @JsonProperty("daydata_open")
+        @JsonProperty("open")
         private Integer openPrice;
         @JsonProperty("high")
         private Integer highPrice;
@@ -203,7 +198,7 @@ public class HistoricalDataDto {
         private String code;
         @JsonProperty("mindata_date")
         private LocalDateTime dateTime;
-        @JsonProperty("mindata_open")
+        @JsonProperty("open")
         private Integer openPrice;
         @JsonProperty("high")
         private Integer highPrice;
