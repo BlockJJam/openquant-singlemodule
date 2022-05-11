@@ -73,6 +73,10 @@ dependencies {
     //implementation group:'org.springframework.boot', name:'spring-boot-starter-data-redis', version: redisVersion
 
 
+    // lombok test 설정
+    testCompileOnly 'org.projectlombok:lombok'
+    testAnnotationProcessor 'org.projectlombok:lombok'
+
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.springframework.restdocs:spring-restdocs-mockmvc'
 	testImplementation 'org.springframework.security:spring-security-test'
