@@ -52,3 +52,7 @@ vue-prototype
 
 ### generated file
 **/src/main/generated/**
+
+
+### application-local.yml
+**/application.yml
