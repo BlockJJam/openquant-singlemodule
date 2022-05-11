@@ -37,4 +37,6 @@ public class Symbols {
     @Column(name="update_datetime")
     private LocalDateTime updateAt;
 
+    private Boolean live;
+
 }

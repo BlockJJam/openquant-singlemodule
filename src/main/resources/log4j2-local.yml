@@ -52,7 +52,7 @@ Configuration:
         additivity: false
         AppenderRef:
           - ref: Console_Appender
-          - ref: File_Appender
+#          - ref: File_Appender
       -
         name: org.hibernate.type.descriptor.BasicBinder
         level: TRACE
