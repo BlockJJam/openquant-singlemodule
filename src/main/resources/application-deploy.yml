@@ -13,7 +13,6 @@ spring:
   # Datasource config
   datasource:
     driver-class-name: org.postgresql.Driver
-#    url: jdbc:postgresql://3.36.78.50:5432/postgres
     url: {DATABASE_DEPOLY_URL}
     username: {DATABASE_DEPLOY_ID}
     password: {DATABASE_DEPLOY_PWD}
