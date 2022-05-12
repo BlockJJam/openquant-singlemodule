@@ -21,7 +21,7 @@ gradle-build_main:
   retry: 2
   script:
     - ./gradlew clean
-    - ./gradlew build
+    - ./gradlew build -x test -x asciidoctor
   artifacts:
     paths:
       - build/libs/*.jar
