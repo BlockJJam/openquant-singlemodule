@@ -13,7 +13,7 @@ import org.springframework.core.annotation.Order;
 
 @Configuration
 public class ContainerConfig {
-    @Value("${tomcat.ajp.protocol}")
+    /*@Value("${tomcat.ajp.protocol}")
     private String ajpProtocol;
 
     @Value("${tomcat.ajp.port}")
@@ -36,5 +36,5 @@ public class ContainerConfig {
         ((AbstractAjpProtocol<?>) ajpConnector.getProtocolHandler()).setSecretRequired(false);
 
         return ajpConnector;
-    }
+    }*/
 }
