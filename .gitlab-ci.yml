@@ -35,6 +35,7 @@ docker_build_main:
   retry: 2
   before_script:
     - echo "$HARBOR_HOST ,$HARBOR_SPRING_USER, $HARBOR_DOMAIN"
+    - echo "$APPLICATION_YAML_PATH, $DATABASE_DEPLOY_URL, $DATABASE_DEPLOY_ID, $DATABASE_DEPLOY_PWD"
     - echo "$HARBOR_SPRING_PASSWORD" | docker login $HARBOR_HOST -u "$HARBOR_SPRING_USER" --password-stdin
   script:
     - pwd
