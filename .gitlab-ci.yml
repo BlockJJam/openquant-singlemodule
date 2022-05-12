@@ -20,7 +20,8 @@ gradle-build_main:
     - main
   retry: 2
   script:
-    - ./gradlew clean build
+    - ./gradlew clean
+    - ./gradlew build -x test
   artifacts:
     paths:
       - build/libs/*.jar

@@ -43,6 +43,9 @@ spring:
   cache:
     jcache:
       config: classpath:ehcache.xml
+  #profile setting
+  profiles:
+    active: deploy
   #Redis
 #  redis:
 #    host: localhost
