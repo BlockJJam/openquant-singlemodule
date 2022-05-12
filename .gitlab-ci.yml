@@ -46,9 +46,9 @@ docker_build_main:
      docker build
      --tag $APP:$MAIN_VERSION
      --build-arg APPLICATION_YAML_PATH=$APPLICATION_YAML_PATH
-     --build-arg DATABASE_DEPLOY_URL=$DATABASE_DEPLOY_URL
      --build-arg DATABASE_DEPLOY_ID=$DATABASE_DEPLOY_ID
-     --build-arg DATABASE_DEPLOY_PWD=$DATABASE_DEPLOY_PWD
+     --build-arg DATABASE_DEPLOY_ID=$DATABASE_DEPLOY_PWD
+     --build-arg DATABASE_DEPLOY_URL=$DATABASE_DEPLOY_URL
      --no-cache
      .
     - docker tag $APP:$MAIN_VERSION $HARBOR_DOMAIN/$PROJECT/$APP:$MAIN_VERSION
