@@ -9,7 +9,8 @@ RUN echo ${DATABASE_DEPLOY_URL} $DATABASE_DEPLOY_URL "$DATABASE_DEPLOY_URL"
 RUN echo ${DATABASE_DEPLOY_ID} $DATABASE_DEPLOY_ID "$DATABASE_DEPLOY_ID"
 RUN echo ${DATABASE_DEPLOY_PWD} $DATABASE_DEPLOY_PWD "$DATABASE_DEPLOY_PWD"
 ENV SPRING_PROFILES_ACTIVE=$APPLICATION_YAML_PATH
+ENV SPRING_DATABASE_DEPLOY_URL=$DATABASE_DEPLOY_URL
 COPY ${JAR_FILE_PATH} /home/quant/SpringApp.jar
 WORKDIR /home/quant
-ENTRYPOINT ["java", "-jar","SpringApp.jar","--spring.datasource.url=${DATABASE_DEPLOY_URL}","--spring.datasource.username=${DATABASE_DEPLOY_ID}","--spring.datasource.password=${DATABASE_DEPLOY_PWD}"]
+ENTRYPOINT ["java", "-jar","SpringApp.jar","--spring.datasource.url=${SPRING_DATABASE_DEPLOY_URL}","--spring.datasource.username=${DATABASE_DEPLOY_ID}","--spring.datasource.password=${DATABASE_DEPLOY_PWD}"]
 #ENTRYPOINT ["java", "-jar","SpringApp.jar","-Dspring.profiles.active=${APPLICATION_YAML_PATH}","-Dspring-boot.run.arguments=--DATABASE_DEPLOY_URL=${DATABASE_DEPLOY_URL},--DATABASE_DEPLOY_ID=${DATABASE_DEPLOY_ID},--DATABASE_DEPLOY_PWD=${DATABASE_DEPLOY_PWD}"]
