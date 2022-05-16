@@ -13,9 +13,6 @@ spring:
   # Datasource config
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: ${DATABASE_DEPLOY_URL}
-    username: ${DATABASE_DEPLOY_ID}
-    password: ${DATABASE_DEPLOY_PWD}
     hikari:
       maximum-pool-size: 10
       idle-timeout: 600000
