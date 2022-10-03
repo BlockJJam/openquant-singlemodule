@@ -1,9 +1,12 @@
 # <span style="color:#0077ff">Open Quant Spring Application
 
 
-> 📘 INFO  
+> 📘 **INFO**  
 > 해당 애플리케이션은 기업 신규 사업 프로젝트에서 **프로토타입 버전의 REST API** 서버였습니다. 현재, 해당 **신규 사업이 종료**되고 **사업 목적으로 활용하지 않아** 팀 허락하에 전담했던 Spring Boot 소스코드 소유가 가능해졌고, 이를 개인 리포지토리에 저장하게 되었습니다.
-> 
+
+
+> 💡 **주의!**  
+> 해당 애플리케이션은 RESTful API Server로, View file(static file)을 제공하지 않습니다. 밑에 이미지들은 Vue.js 개발자와 함께 프로젝트한 결과물입니다.
 
 ### <span style="color:#0077ff">☕️ Open Quant Objective
 
