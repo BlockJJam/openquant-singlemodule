@@ -1,6 +1,5 @@
 # <span style="color:#0077ff">Open Quant Spring Application
 
----
 
 > 📘 INFO  
 > 해당 애플리케이션은 기업 신규 사업 프로젝트에서 **프로토타입 버전의 REST API** 서버였습니다. 현재, 해당 **신규 사업이 종료**되고 **사업 목적으로 활용하지 않아** 팀 허락하에 전담했던 Spring Boot 소스코드 소유가 가능해졌고, 이를 개인 리포지토리에 저장하게 되었습니다.
@@ -17,7 +16,6 @@
 
 ## <span style="color:#0077ff">👜 Spec
 
----
 
 <u>**Spring**</u>
 - Java :11
@@ -34,8 +32,6 @@
 
 
 ## <span style="color:#0077ff"> Application Feature
-
----
 
 <u>**Feature 1.** 사용자 관리 API</u>
 <div style="float: right"><img src="https://user-images.githubusercontent.com/57485510/193516456-f382ab5b-47f0-4764-9967-5f861b11c701.gif" width="75%" height="75%">
@@ -161,7 +157,6 @@
 
 ## 프로젝트 개선 사항
 
----
 - Exception의 Exception Advice로 **체크예외**를 처리하는데, **언체크 예외**에 대해서는 세심하게 고려하지 못했기 때문에 개선에 대한 필요성을 느꼈습니다.
 - 시세 데이터를 조회하는 서비스의 특성 상, **대용량 데이터를 조회하는 성능**이 중요하지만 아직까지 **Jmeter**와 같은 부하테스트를 진행하지 않았기 때문에 **성능 부하 테스트 툴을 통해 검증**해야 한다고 생각합니다.
 - 테스트 코드의 양이 서비스별로 부족하거나, 없는 경우도 있습니다. 구현하는 기능에 있어서 다양한 상황을 고려한 **테스트 코드를 늘려야할 필요성**이 있다고 판단됩니다.
